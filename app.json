@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "HRIS 2",
+    "slug": "HRIS2",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/fmm.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.FMM.HRIS"
+    },
+    "android": {
+      "package": "com.FMM.HRIS",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCSyTFameSOaj9B1w1l2q468aFxuEm1hfY "
+        }
+      }
+    }
+  }
+}
