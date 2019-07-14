@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-
-import { Container, Header, Content, Item, Input, Icon, Form, Label, Button } from 'native-base';
+import { View, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { Card, CardItem, Form, Item, Input, Header, Left, Body, Right, Icon, Button, Title, Label} from 'native-base';
+import { Constants} from 'expo';
+import { Ionicons } from 'react-native-vector-icons';
+import Reinput, { ReinputButton } from 'reinput';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -12,33 +14,32 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, height: '100%', width: '100%', paddingTop: 30, backgroundColor: '#eeba19' }}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
-          <Image source={require('../../assets/fmm.png')} />
+      <View style={{ flex: 1, paddingTop: Constants.statusBarHeight, backgroundColor: 'gray'}}>
+        <KeyboardAvoidingView behavior="padding" style={{flex:1}}>
+          <View style={{flex:1.5, }}>
+          
         </View>
-        <View style={{ flex: 1.5 }}>
-          <Form style={{ paddingTop: 30, padding: 10 }}>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }} >
-              <Label style={{ color: 'black' }}>Username</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }}>
-              <Label style={{ color: 'black' }}>Password</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-          </Form>
-          <View style={{ alignContent: 'center', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingTop: 30 }}>
-            <Button onPress={() => this.props.navigation.navigate('Dashboard')} style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center', backgroundColor: '#4f331b' }}>
-              <Text style={{ color: 'white' }}>Login</Text>
-            </Button>
-            <View style={{ justifyContent: 'center', alignContent: 'center', alignItems: 'center', padding: 10 }}>
-              <Text style={{ fontSize: 16 }}>Dont have an account ?</Text>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-                <Text style={{ fontSize: 16, color: 'white' }} >Register</Text>
-              </TouchableOpacity>
-            </View>
+        
+        <Card style={{ flex: 1.7, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+        
+          <View style={{ height: 100, paddingTop: 10, alignContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 22 }}>Welcome!</Text>
+            <Text style={{ fontSize: 18 }}>Please, login to continue</Text>
           </View>
-        </View>
+          <View style={{ paddingLeft: 20, paddingRight: 20 }}>
+            <Reinput
+              label='Username'
+            />
+            <Reinput
+              label='Password'
+            />
+          </View>
+          <Button block style={{ margin: 20 }}>
+            <Text style={{ color: 'white' }}>Login</Text>
+          </Button>
+        </Card>
+        </KeyboardAvoidingView>
+        
       </View>
     );
   }

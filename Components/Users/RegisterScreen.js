@@ -1,52 +1,71 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-
-import { Container, Header, Content, Item, Input, Icon, Form, Label, Button } from 'native-base';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {
+  Card,
+  CardItem,
+  Form,
+  Item,
+  Input,
+  Header,
+  Left,
+  Body,
+  Right,
+  Icon,
+  Button,
+  Title,
+  Label,
+} from 'native-base';
+import {Constants} from 'expo';
+import {Ionicons} from 'react-native-vector-icons';
+import Reinput, {ReinputButton} from 'reinput';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 export default class RegisterScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+  constructor (props) {
+    super (props);
+    this.state = {};
   }
 
-  render() {
+  render () {
     return (
-      <View style={{ flex: 1, height: '100%', width: '100%', paddingTop: 30, backgroundColor: '#eeba19' }}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignContent: 'center', paddingTop: 30 }}>
-          <Image source={require('../../assets/fmm.png')} />
-        </View>
-        <View style={{ flex: 3 }}>
-          <Form style={{ paddingTop: 30, padding: 10 }}>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }} >
-              <Label style={{ color: 'black' }}>No Telfon</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }} >
-              <Label style={{ color: 'black' }}>Username</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }}>
-              <Label style={{ color: 'black' }}>Password</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-            <Item floatingLabel style={{ borderBottomWidth: 0 }}>
-              <Label style={{ color: 'black' }}>Confirm Password</Label>
-              <Input style={{ borderBottomColor: 'black', borderBottomWidth: 2 }} />
-            </Item>
-          </Form>
-          <View style={{ alignContent: 'center', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingTop: 30 }}>
-            <Button style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center', backgroundColor: '#4f331b' }}>
-              <Text style={{ color: 'white' }}>Register</Text>
-            </Button>
-            <View style={{ justifyContent: 'center', alignContent: 'center', alignItems: 'center', padding: 10 }}>
-              <Text style={{ fontSize: 16 }}>Already have an account ?</Text>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-                <Text style={{ fontSize: 16, color: 'white' }} >Login</Text>
-              </TouchableOpacity>
+      <View
+        style={{
+          flex: 1,
+          paddingTop: Constants.statusBarHeight,
+          backgroundColor: 'gray',
+        }}
+      >
+
+        <View style={{flex: 1}} />
+        <Card
+          style={{flex: 2.2, borderTopLeftRadius: 15, borderTopRightRadius: 15}}
+        >
+          <KeyboardAwareScrollView>
+            <View
+              style={{
+                height: 100,
+                paddingTop: 10,
+                alignContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{fontSize: 22}}>Welcome!</Text>
+              <Text style={{fontSize: 18}}>Please, register to continue</Text>
             </View>
-          </View>
-        </View>
+            <View style={{paddingLeft: 20, paddingRight: 20}}>
+              <Reinput label="Nama" />
+              <Reinput label="No Telpon" />
+              <Reinput label="Email" />
+              <Reinput label="Username" />
+              <Reinput label="Password" />
+              <Reinput label="Confirm Password" />
+            </View>
+            <Button block style={{margin: 20}}>
+              <Text style={{color: 'white'}}>Login</Text>
+            </Button>
+          </KeyboardAwareScrollView>
+        </Card>
+
       </View>
     );
   }

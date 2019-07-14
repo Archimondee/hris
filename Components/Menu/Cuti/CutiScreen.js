@@ -30,7 +30,8 @@ export default class CutiScreen extends Component {
       animation: new Animated.Value(0),
       isHeader: false,
       iconInfo: 'ios-search',
-      textOpacity: 0,
+      textOpacity: new Animated.Value(0),
+      height: new Animated.Value(0),
 
       success: '#5cb85c',
       error: '#d9534f',
@@ -60,7 +61,7 @@ export default class CutiScreen extends Component {
   getCuti = () => {
     //Dengan tanggal
     //console.log('Halo halo')
-    fetch('http://192.168.0.6:8080/hris_test/getCuti.php', {
+    fetch('http://192.168.0.7:8080/hris_test/getCuti.php', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -81,7 +82,7 @@ export default class CutiScreen extends Component {
     console.log('Data mau di update');
     var id = id;
     var status = status;
-    fetch('http://192.168.0.6:8080/hris_test/changeStatus.php', {
+    fetch('http://192.168.0.7:8080/hris_test/changeStatus.php', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -116,7 +117,6 @@ export default class CutiScreen extends Component {
 
   openHeader = () => {
     if (this.state.isHeader === false) {
-      //console.log('Buka');
       Animated.timing(this.state.animation, {
         toValue: 1,
         duration: 1000
@@ -124,19 +124,23 @@ export default class CutiScreen extends Component {
         this.setState({
           iconInfo: 'ios-close',
           isHeader: true,
-        })
-      });
-    } else if (this.state.isHeader === true) {
-      //console.log('Tutup');
-      Animated.timing(this.state.animation, {
-        toValue: 0,
-        duration: 1000
-      }).start(() => {
-        this.setState({
-          iconInfo: 'ios-search',
-          isHeader: false,
+          textOpacity:1
         });
       });
+      
+    } else if (this.state.isHeader === true) {
+      //console.log('Tutup');
+       Animated.timing(this.state.animation, {
+         toValue: 0,
+         duration: 1000
+       }).start(() => {
+         this.setState({
+           iconInfo: 'ios-search',
+           isHeader: false,
+           textOpacity: 0
+         });
+       });
+      
     } else {
       alert('Error');
     }
@@ -195,6 +199,8 @@ export default class CutiScreen extends Component {
 
     const animatedStyle = {
       flex: this.state.animation,
+      // opacity: this.state.textOpacity,
+      // height: this.state.height
     }
     //Searchbar di buat animasi
     return (
