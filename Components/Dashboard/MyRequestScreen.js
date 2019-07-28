@@ -94,13 +94,13 @@ export default class ReportScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={{ height: 60, width: width, backgroundColor: '#6a51ae', justifyContent: 'flex-end', alignItems: 'center', alignContent: 'flex-end', flexDirection: 'row' }}>
+        <View style={{ height: 60, width: width, backgroundColor: '#2F954E', justifyContent: 'flex-end', alignItems: 'center', alignContent: 'flex-end', flexDirection: 'row' }}>
           <Text style={{ color: 'white' }}>Search.....   </Text>
           <TouchableOpacity onPress={this.openHeader} style={{ paddingRight: 10 }}>
             <Ionicons name={this.state.iconInfo} size={32} color="white" />
           </TouchableOpacity>
         </View>
-        <Animated.View style={[animatedStyle, { backgroundColor: '#6a51ae' }]}>
+        <Animated.View style={[animatedStyle, { backgroundColor: '#2F954E' }]}>
           <Animated.View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10 }}>
             <Animated.View style={{ paddingTop: 10 }}>
               <Animated.Text style={{ color: 'white' }}>Mulai</Animated.Text>
@@ -147,82 +147,115 @@ export default class ReportScreen extends Component {
           </Animated.View>
         </Animated.View>
         <View style={{ flex: 1 }}>
-          <ScrollView style={{ flex: 1 }}>
-            <Card style={{ marginTop: 10, marginLeft: 10, marginRight: 10, borderRadius: 10 }}>
+          <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+            <Card style={{marginTop: 5, marginLeft: 10, marginRight: 10}}>
               <SwipeRow
                 leftOpenValue={75}
                 rightOpenValue={-75}
-                disableLeftSwipe={true}
-                disableRightSwipe={true}
-                style={{ backgroundColor: 'white', borderRadius: 10 }}
+                disableLeftSwipe={false}
+                disableRightSwipe={false}
+                style={{backgroundColor: 'white'}}
+                left={
+                  <Button success onPress={() => alert ('Success')}>
+                    <Icon active name="add" />
+                  </Button>
+                }
                 body={
-                  <View style={{ flex: 1, flexDirection: 'row', }}>
-                    <View style={{ flex: 3.3, flexWrap: 'wrap' }}>
-                      <Text style={{ color: 'black' }}>Gilang Aditya R</Text>
-                      <Text style={{ color: 'black' }}>29 April 1991</Text>
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{flex: 3.3, flexWrap: 'wrap'}}>
+                      <Text style={{color: 'black'}}>
+                        Gilang Aditya R
+                      </Text>
+                      <Text style={{color: 'black'}}>
+                        29 April 1997
+                      </Text>
                     </View>
-                    <View style={{ flex: 3 }}>
-                      <Text style={{ color: 'black' }}>Tipe</Text>
-                      <Text style={{ color: 'black' }}>Cuti Reguler</Text>
+                    <View style={{flex: 3}}>
+                      <Text style={{color: 'black'}}>Tipe</Text>
+                      <Text style={{color: 'black'}}>
+                        Cuti Libur
+                      </Text>
                     </View>
-                    <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
-                      <TouchableOpacity onPress={() => alert('Open bar')}>
-                        <Ionicons name="ios-arrow-forward" size={32} color='black' />
+                    <View
+                      style={{
+                        flex: 0.3,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                      }}
+                    >
+                      <TouchableOpacity
+                        onPress={() =>
+                          this.props.navigation.navigate ('CutiDetail')}
+                      >
+                        <Ionicons
+                          name="ios-arrow-forward"
+                          size={32}
+                          color={'black'}
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
                 }
+                right={
+                  <Button danger onPress={() => alert ('Gagal')}>
+                    <Icon active name="trash" />
+                  </Button>
+                }
               />
             </Card>
-            <Card style={{ marginTop: 10, marginLeft: 10, marginRight: 10, borderRadius: 10 }}>
+            <Card style={{marginTop: 5, marginLeft: 10, marginRight: 10}}>
               <SwipeRow
                 leftOpenValue={75}
                 rightOpenValue={-75}
-                disableLeftSwipe={true}
-                disableRightSwipe={true}
-                style={{ backgroundColor: 'white', borderRadius: 10 }}
+                disableLeftSwipe={false}
+                disableRightSwipe={false}
+                style={{backgroundColor: 'white'}}
+                left={
+                  <Button success onPress={()=>alert('Success')}>
+                    <Icon active name="add" />
+                  </Button>
+                }
                 body={
-                  <View style={{ flex: 1, flexDirection: 'row', }}>
-                    <View style={{ flex: 3.3, flexWrap: 'wrap' }}>
-                      <Text style={{ color: 'black' }}>Gilang Aditya R</Text>
-                      <Text style={{ color: 'black' }}>29 April 1991</Text>
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{flex: 3.3, flexWrap: 'wrap'}}>
+                      <Text style={{color: 'black'}}>
+                        Gilang Aditya R
+                      </Text>
+                      <Text style={{color: 'black'}}>
+                        29 April 1997
+                      </Text>
                     </View>
-                    <View style={{ flex: 3 }}>
-                      <Text style={{ color: 'black' }}>Tipe</Text>
-                      <Text style={{ color: 'black' }}>Cuti Reguler</Text>
+                    <View style={{flex: 3.1}}>
+                      <Text style={{color: 'black'}}>Tipe</Text>
+                      <Text style={{color: 'black'}}>
+                        Kacamata & Lensa
+                      </Text>
                     </View>
-                    <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
-                      <TouchableOpacity onPress={() => alert('Open bar')}>
-                        <Ionicons name="ios-arrow-forward" size={32} color='black' />
+                    <View
+                      style={{
+                        flex: 0.3,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                      }}
+                    >
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate ('GantiDetail')}
+                      >
+                        <Ionicons
+                          name="ios-arrow-forward"
+                          size={32}
+                          color={'black'}
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
                 }
-              />
-            </Card>
-            <Card style={{ marginTop: 10, marginLeft: 10, marginRight: 10, borderRadius: 10 }}>
-              <SwipeRow
-                leftOpenValue={75}
-                rightOpenValue={-75}
-                disableLeftSwipe={true}
-                disableRightSwipe={true}
-                style={{ backgroundColor: 'white', borderRadius: 10 }}
-                body={
-                  <View style={{ flex: 1, flexDirection: 'row', }}>
-                    <View style={{ flex: 3.3, flexWrap: 'wrap' }}>
-                      <Text style={{ color: 'black' }}>Gilang Aditya R</Text>
-                      <Text style={{ color: 'black' }}>29 April 1991</Text>
-                    </View>
-                    <View style={{ flex: 3 }}>
-                      <Text style={{ color: 'black' }}>Tipe</Text>
-                      <Text style={{ color: 'black' }}>Cuti Reguler</Text>
-                    </View>
-                    <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
-                      <TouchableOpacity onPress={() => alert('Open bar')}>
-                        <Ionicons name="ios-arrow-forward" size={32} color='black' />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
+                right={
+                  <Button danger onPress={()=>alert('Gagal')}>
+                    <Icon active name="trash" />
+                  </Button>
                 }
               />
             </Card>
@@ -236,6 +269,6 @@ export default class ReportScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#d3d3d3'
+    backgroundColor: 'white'
   }
 });

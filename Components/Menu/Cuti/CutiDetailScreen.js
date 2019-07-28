@@ -98,7 +98,28 @@ export default class CutiDetailScreen extends Component {
             />
             <ReinputButton
               label='Tipe Cuti'
-              value='Cuti Reguler'
+              value='Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit ametLorem Ipsum dolor sit ametLorem Ipsum dolor sit ametLorem Ipsum dolor sit ametLorem Ipsum dolor sit ametLorem Ipsum dolor sit ametLorem Ipsum dolor sit amet'
+              underlineColor="#2E7D32"
+              underlineHeight={2}
+              underlineActiveHeight={2}
+              labelActiveColor='#2E7D32'
+              labelColor='#2E7d32'
+            //onPress={/* whatever callback */}
+            />
+            <ReinputButton
+              label='Alasan Cuti'
+              value='Sakit DBD'
+              underlineColor="#2E7D32"
+              underlineHeight={2}
+              underlineActiveHeight={2}
+              labelActiveColor='#2E7D32'
+              labelColor='#2E7d32'
+              
+            //onPress={/* whatever callback */}
+            />
+            <ReinputButton
+              label='Alamat Cuti'
+              value='Dirumah'
               underlineColor="#2E7D32"
               underlineHeight={2}
               underlineActiveHeight={2}

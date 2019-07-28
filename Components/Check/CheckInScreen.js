@@ -60,14 +60,14 @@ export default class CheckInScreen extends Component {
     const { height, width } = Dimensions.get('window');
     return (
       <View style={{ flex: 1, paddingTop: Constants.statusBarHeight }}>
-        <View style={{ height: 60, width: width, flexDirection: 'row', backgroundColor: '#eeba19' }}>
+        <View style={{ height: 60, width: width, flexDirection: 'row', backgroundColor: '#2F954E' }}>
           <View style={{ flex: 0.4, justifyContent: 'center', alignContent: 'flex-start', alignItems: 'flex-start', paddingLeft: 15 }}>
             <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ paddingLeft: 0 }}>
-              <Ionicons name="ios-arrow-back" size={32} color="#4f331b" />
+              <Ionicons name="ios-arrow-back" size={32} color="white" />
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1.5, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#4f331b' }}>Form Izin Lainnya</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}>Form Izin Lainnya</Text>
           </View>
           <View style={{ flex: 0.6, justifyContent: 'space-around', alignContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
           </View>
@@ -88,7 +88,7 @@ export default class CheckInScreen extends Component {
             </MapView>
           </Card>
           <View style={{ justifyContent: 'flex-end', alignSelf: 'flex-end', paddingTop: 10 }}>
-            <Button onPress={() => this._getLocationAsync()} style={{ width: 140, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4f331b' }}>
+            <Button onPress={() => this._getLocationAsync()} style={{ width: 140, justifyContent: 'center', alignItems: 'center', backgroundColor: '#2F954E' }}>
               <Text style={{ textAlign: 'center', color: 'white' }}>Find My Location</Text>
             </Button>
           </View>
@@ -98,37 +98,45 @@ export default class CheckInScreen extends Component {
                 <ReinputButton
                   label='Nama Pegawai'
                   value='Gilang Aditya R'
-                  underlineColor="#4f331b"
+                  underlineColor="#2F954E"
                   underlineHeight={2}
                   underlineActiveHeight={2}
-                  labelActiveColor='#4f331b'
-                  labelColor='#4f331b'
+                  labelActiveColor='#2F954E'
+                  labelColor='#2F954E'
                 //onPress={/* whatever callback */}
                 />
                 <ReinputButton
                   label='Tipe'
                   value='Izin Lainnya'
-                  underlineColor="#4f331b"
+                  underlineColor="#2F954E"
                   underlineHeight={2}
                   underlineActiveHeight={2}
-                  labelActiveColor='#4f331b'
-                  labelColor='#4f331b'
+                  labelActiveColor='#2F954E'
+                  labelColor='#2F954E'
                 //onPress={/* whatever callback */}
                 />
                 <ReinputButton
                   label='Tanggal Izin'
                   value={this._getDatetime()}
-                  underlineColor="#4f331b"
+                  underlineColor="#2F954E"
                   underlineHeight={2}
                   underlineActiveHeight={2}
-                  labelActiveColor='#4f331b'
-                  labelColor='#4f331b'
+                  labelActiveColor='#2F954E'
+                  labelColor='#2F954E'
                 //onPress={/* whatever callback */}
                 />
-                <Textarea rowSpan={3} bordered placeholder="Alasan" />
+                <Reinput
+                  label="Alasan"
+                  underlineDuration={200}
+                  activeColor="#2E7D32"
+                  multiline={true}
+                  numberOfLines={2}
+                  //error={this.state.errNama}
+                  //onChangeText={nama => this.RuleNama (nama)}
+                />
               </Form>
               <View style={{ paddingTop: 10 }}>
-                <Button block style={{ backgroundColor: '#4f331b' }}>
+                <Button block style={{ backgroundColor: '#2F954E' }}>
                   <Text style={{ color: 'white' }}>Submit</Text>
                 </Button>
               </View>

@@ -23,10 +23,10 @@ export default class StartScreen extends Component {
           </View>
         </View>
         <View style={{flex:1, paddingLeft:15, paddingRight:15}}>
-          <Button block style={{marginBottom:10}}>
+          <Button block style={{marginBottom:10, backgroundColor:'#2F954E'}} onPress={()=>this.props.navigation.navigate('Login')}>
             <Text style={{color:'white'}}>Login</Text>
           </Button>
-          <Button block>
+          <Button block style={{backgroundColor:'#2F954E'}} onPress={()=>this.props.navigation.navigate('Register')}>
             <Text style={{color:'white'}}>Register</Text>
           </Button>
         </View>

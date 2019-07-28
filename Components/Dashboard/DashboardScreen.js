@@ -25,26 +25,26 @@ export default class DashboardScreen extends Component {
   render() {
     const { navigation } = this.props;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#eeba19', paddingTop: 30 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#2F954E', paddingTop: 30,}}>
         <StatusBar
           barStyle="light-content"
-          backgroundColor="#eeba19"
+          backgroundColor="white"
         />
-        <Header hasTabs style={{ backgroundColor: '#eeba19' }}>
+        <Header hasTabs style={{ backgroundColor: '#2F954E'}}>
           <Body style={{ width: 200, flexWrap: 'nowrap' }}>
-            <Text style={{ fontSize: 18, color: '#4f331b', fontWeight: 'bold' }}>HRIS Mobile</Text>
+            <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>HRIS Mobile</Text>
           </Body>
           <Right>
             <TouchableOpacity>
-              <Ionicons name="ios-settings" size={30} color="#4f331b" />
+              <Ionicons name="ios-settings" size={30} color="white" />
             </TouchableOpacity>
           </Right>
         </Header>
         <Tabs >
-          <Tab heading={<TabHeading style={{ backgroundColor: '#eeba19' }} tabStyle={{ backgroundColor: '#eeba19' }} activeTabStyle={{ backgroundColor: '#eeba19' }} ><Text style={{color:'#4f331b'}}>Menu</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={{ backgroundColor: '#2F954E' }} tabStyle={{ backgroundColor: '#2F954E', }} activeTabStyle={{ backgroundColor: '#2F954E' }} ><Text style={{color:'white'}}>Menu</Text></TabHeading>}>
             <HomeScreen navigation={navigation} />
           </Tab>
-          <Tab heading={<TabHeading style={{ backgroundColor: '#eeba19' }} tabStyle={{ backgroundColor: '#eeba19' }} activeTabStyle={{ backgroundColor: '#eeba19' }}><Text style={{color:'#4f331b'}}>My Request</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={{ backgroundColor: '#2F954E' }} tabStyle={{ backgroundColor: '#2F954E' }} activeTabStyle={{ backgroundColor: '#2F954E' }}><Text style={{color:'white'}}>My Request</Text></TabHeading>}>
             <MyRequestScreen navigation={navigation} />
           </Tab>
         </Tabs>

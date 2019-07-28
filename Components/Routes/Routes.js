@@ -16,6 +16,22 @@ import CutiScreen from '../Menu/Cuti/CutiScreen';
 
 import CheckInScreen from '../Check/CheckInScreen';
 
+import GantiScreen from '../Menu/Ganti/GantiScreen';
+import GantiFormScreen from '../Menu/Ganti/GantiFormScreen';
+import GantiDetailScreen from '../Menu/Ganti/GantiDetailScreen';
+
+import GettingScreen from '../Started/GettingScreen';
+import StartScreen from '../Users/StartScreen';
+import Auth from '../Helper/Auth';
+
+const StartedStack = createStackNavigator({
+  Getting: GettingScreen,
+  
+  Auth: Auth
+},{
+  initialRouteName:'Getting',
+  headerMode:'none'
+})
 
 const DashboardStack = createStackNavigator({
   Dashboard: DashboardScreen,
@@ -26,24 +42,53 @@ const DashboardStack = createStackNavigator({
   CutiDetail: CutiDetailScreen,
   CutiForm: CutiFormScreen,
 
-  CheckIn: CheckInScreen
+  CheckIn: CheckInScreen,
+
+  GantiScreen: GantiScreen,
+  GantiDetail: GantiDetailScreen,
+  GantiForm: GantiFormScreen
 },{
   initialRouteName:'Dashboard',
   headerMode:'none'
 })
 
 const UserStack = createStackNavigator({
+  Mulai: StartScreen,
   Login: LoginScreen,
   Register: RegisterScreen
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'Mulai',
     headerMode: 'none'
   })
 
+//Testing ---
+// const CutiStack = createStackNavigator({
+//   CutiScreen: CutiScreen,
+//   CutiDetail: CutiDetailScreen,
+//   CutiForm: CutiFormScreen,
+// },{
+//   initialRouteName:'CutiScreen',
+//   headerMode:'none'
+// });
+
+// const GantiStack = createStackNavigator({
+//   GantiScreen: GantiScreen,
+//   GantiDetail: GantiDetailScreen,
+//   GantiForm: GantiFormScreen
+// },{
+//    initialRouteName:'GantiScreen',
+//    headerMode:'none'
+//  });
+
+//End Testing
+
 export default Main = createAppContainer(createSwitchNavigator({
-  Navigasi: UserStack,
-  Home: DashboardStack
+  //Cuti:CutiStack
+  //Ganti: GantiStack
+  Awal: StartedStack,
+  Users: UserStack,
+  Dash: DashboardStack
 }, {
-    initialRouteName: 'Navigasi',
+    initialRouteName: 'Awal',
   })
 );

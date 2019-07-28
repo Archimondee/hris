@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {View, Text, TouchableOpacity, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import {
   Card,
   CardItem,
@@ -32,15 +32,13 @@ export default class RegisterScreen extends Component {
         style={{
           flex: 1,
           paddingTop: Constants.statusBarHeight,
-          backgroundColor: 'gray',
-        }}
-      >
+        }}>
+      <ImageBackground source={require('../../assets/bg.jpeg')} style={{width:'100%', height:'100%'}}>
 
         <View style={{flex: 1}} />
         <Card
-          style={{flex: 2.2, borderTopLeftRadius: 15, borderTopRightRadius: 15}}
+          style={{flex: 2.7, borderTopLeftRadius: 15, borderTopRightRadius: 15, marginLeft:5, marginRight:5}}
         >
-          <KeyboardAwareScrollView>
             <View
               style={{
                 height: 100,
@@ -60,13 +58,13 @@ export default class RegisterScreen extends Component {
               <Reinput label="Password" />
               <Reinput label="Confirm Password" />
             </View>
-            <Button block style={{margin: 20}}>
-              <Text style={{color: 'white'}}>Login</Text>
+            <Button block style={{margin: 20, backgroundColor:'#2F954E'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>
+              <Text style={{color: 'white'}}>Register</Text>
             </Button>
-          </KeyboardAwareScrollView>
         </Card>
-
+        </ImageBackground>
       </View>
+
     );
   }
 }

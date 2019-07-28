@@ -15,6 +15,8 @@ import { Form, Item, Input, Label, Button, Container, Header, Tab, Tabs, TabHead
 import { Ionicons } from 'react-native-vector-icons';
 import Reinput, { ReinputButton } from 'reinput';
 import PickerModal from 'react-native-picker-modal-view';
+import data from './Cuti.json';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 const list = [
   { Id: 1, Name: 'Test1 Name', Value: 'Test1 Value' },
@@ -240,7 +242,7 @@ export default class CutiFormScreen extends Component {
     return (
       //Buat Scroll View, buat header
       <View style={{ flex: 1, paddingTop: 30 }}>
-        <Header hasTabs style={{ backgroundColor: '#6a51ae' }}>
+        <Header hasTabs style={{ backgroundColor: '#2F954E' }}>
           <Body style={{ width: width - 100, flexWrap: 'nowrap', flexDirection: 'row' }}>
             <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ paddingLeft: 10, paddingRight: 30 }}>
               <Ionicons name="ios-arrow-back" size={32} color="white" />
@@ -248,7 +250,7 @@ export default class CutiFormScreen extends Component {
             <Text style={{ paddingTop: 5, fontSize: 16, color: 'white', fontWeight: 'bold' }}>Form Tambah Cuti</Text>
           </Body>
         </Header>
-        <View style={{ flex: 1, backgroundColor: '#6a51ae', flexDirection: 'row' }}>
+        <View style={{ flex: 1, backgroundColor: '#2F954E', flexDirection: 'row' }}>
           <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
             <View style={{ height: 50, width: 50, borderColor: 'white', borderWidth: 1, justifyContent: 'center', alignContent: 'center' }}>
               <Text style={{ color: 'white' }}>Icon</Text>
@@ -263,8 +265,8 @@ export default class CutiFormScreen extends Component {
             <Animated.View style={{ paddingTop: 10, paddingLeft: 25, paddingRight: 25 }}>
               <Animated.View style={{ flexDirection: 'column' }}>
                 <ReinputButton
-                  label='Tanggal'
-                  value={this.getDatetime()}
+                  label='Nama'
+                  value="Gilang Aditya R"
                   underlineColor="#2E7D32"
                   underlineHeight={2}
                   underlineActiveHeight={2}
@@ -272,54 +274,184 @@ export default class CutiFormScreen extends Component {
                   labelColor='#2E7d32'
                 //onPress={/* whatever callback */}
                 />
-                <Reinput
-                  label='Nama Pegawai'
-                  underlineDuration={200}
-                  activeColor='#2E7D32'
-                  error={this.state.errNama}
-                  onChangeText={(nama) => this.RuleNama(nama)}
+                <ReinputButton
+                  label='Divisi / BC'
+                  value="Information Technology"
+                  underlineColor="#2E7D32"
+                  underlineHeight={2}
+                  underlineActiveHeight={2}
+                  labelActiveColor='#2E7D32'
+                  labelColor='#2E7d32'
+                //onPress={/* whatever callback */}
                 />
+                <ReinputButton
+                  label="Jabatan"
+                  value="Group Manager"
+                  underlineColor="#2E7D32"
+                  underlineHeight={2}
+                  underlineActiveHeight={2}
+                  labelActiveColor='#2E7D32'
+                  labelColor='#2E7d32'
+                //onPress={/* whatever callback */}
+                />
+                <ReinputButton
+                  label="Sisa Cuti"
+                  value="11"
+                  underlineColor="#2E7D32"
+                  underlineHeight={2}
+                  underlineActiveHeight={2}
+                  labelActiveColor='#2E7D32'
+                  labelColor='#2E7d32'
+                //onPress={/* whatever callback */}
+                />
+                <ReinputButton
+                  label="Terakhir Cuti"
+                  value="2019-04-18"
+                  underlineColor="#2E7D32"
+                  underlineHeight={2}
+                  underlineActiveHeight={2}
+                  labelActiveColor='#2E7D32'
+                  labelColor='#2E7d32'
+                //onPress={/* whatever callback */}
+                />
+                
               </Animated.View>
             </Animated.View>
             <Animated.View style={[opacityStyle1, { flex: 1, justifyContent: 'flex-end', marginBottom: 36, paddingLeft: 25, paddingRight: 25, }]}>
-              <Button onPress={() => this._btnNext()} block rounded style={{ backgroundColor: '#6a51ae' }}>
+              <Button onPress={() => this._btnNext()} block style={{ backgroundColor: '#2F954E' }}>
                 <Label style={{ color: 'white' }}>Next</Label>
               </Button>
             </Animated.View>
           </Animated.View>
 
           <Animated.View style={[animatedStyle2]}>
-            <Animated.View style={{ paddingTop: 10, paddingLeft: 25, paddingRight: 25 }}>
-              <Animated.View style={{ flexDirection: 'column' }}>
-                <ReinputButton
-                  label='Tanggal'
-                  value={this.getDatetime()}
-                  underlineColor="#2E7D32"
-                  underlineHeight={2}
-                  underlineActiveHeight={2}
-                  labelActiveColor='#2E7D32'
-                  labelColor='#2E7d32'
-                //onPress={/* whatever callback */}
-                />
-                <Reinput
-                  label='Nama Pegawai 1'
-                  underlineDuration={200}
-                  activeColor='#2E7D32'
-                  error={this.state.errNama}
-                  onChangeText={(nama) => this.RuleNama(nama)}
-                />
+            
+              <Animated.View style={{ paddingTop: 10, paddingLeft: 25, paddingRight: 25 }}>
+                <Animated.View style={{ flexDirection: 'column' }}>
+                  <PickerModal
+                    onSelected={this.onSelected.bind (this)}
+                    onClosed={this.onClosed.bind (this)}
+                    onBackButtonPressed={this.onBackButtonPressed.bind (this)}
+                    items={data}
+                    sortingLanguage={'tr'}
+                    showToTopButton={true}
+                    selected={selectedItem}
+                    autoGenerateAlphabeticalIndex={true}
+                    selectPlaceholderText={'Pilih Tipe Cuti'}
+                    onEndReached={() => console.log ('list ended...')}
+                    searchPlaceholderText={'Pilih Tipe Cuti'}
+                    requireSelection={true}
+                    autoSort={true}
+                  />
+                  <ReinputButton
+                    label='Mulai Cuti'
+                    value={this.getDatetime()}
+                    underlineColor="#2E7D32"
+                    underlineHeight={2}
+                    underlineActiveHeight={2}
+                    labelActiveColor='#2E7D32'
+                    labelColor='#2E7d32'
+                  //onPress={/* whatever callback */}
+                  />
+                  <Animated.View style={{flexDirection:'row'}}>
+                    <Animated.View style={{paddingTop:10}}>
+                      <Animated.Text style={{ color: 'black', fontSize:17 }}>Akhir Cuti : </Animated.Text>
+                    </Animated.View>
+                    <Animated.View>
+                      <DatePicker
+                        defaultDate={new Date(2018, 4, 4)}
+                        minimumDate={new Date(2018, 1, 1)}
+                        maximumDate={new Date(2020, 12, 31)}
+                        locale={"en"}
+                        timeZoneOffsetInMinutes={undefined}
+                        modalTransparent={false}
+                        animationType={"fade"}
+                        androidMode={"default"}
+                        placeHolderText="Pilih Tanggal"
+                        textStyle={{ color: "black" }}
+                        placeHolderTextStyle={{ color: "black" }}
+                        onDateChange={this.setDate}
+                        disabled={false}
+                      />
+                    </Animated.View>
+                  </Animated.View>
+                  <ReinputButton
+                    label='Total Cuti'
+                    value="12"
+                    underlineColor="#2E7D32"
+                    underlineHeight={2}
+                    underlineActiveHeight={2}
+                    labelActiveColor='#2E7D32'
+                    labelColor='#2E7d32'
+                  //onPress={/* whatever callback */}
+                  />
+                  <Reinput
+                    label="No Telepon"
+                    underlineDuration={200}
+                    activeColor="#2E7D32"
+                    keyboardType="number-pad"
+                    //error={this.state.errNama}
+                    //onChangeText={nama => this.RuleNama (nama)}
+                  />
+                  <Reinput
+                    label="Alamat Cuti"
+                    underlineDuration={200}
+                    activeColor="#2E7D32"
+                    multiline = {true}
+                    numberOfLines={4}
+                    //error={this.state.errNama}
+                    //onChangeText={nama => this.RuleNama (nama)}
+                  />
+                  <Reinput
+                    label="Alasan Cuti"
+                    underlineDuration={200}
+                    activeColor="#2E7D32"
+                    multiline = {true}
+                    numberOfLines={4}
+                    //error={this.state.errNama}
+                    //onChangeText={nama => this.RuleNama (nama)}
+                  />
+                </Animated.View>
               </Animated.View>
-            </Animated.View>
+            
+            
             <Animated.View style={[opacityStyle2, { justifyContent: 'flex-end', marginBottom: 36, paddingLeft: 25, paddingRight: 25, flex: 1.5 }]}>
-              <Button block style={{ backgroundColor: '#6a51ae' }}>
-                <Label style={{ color: 'white' }}>Simpan</Label>
-              </Button>
-              <View style={{ paddingTop: 10 }}>
-
+              
+              <View style={{flex: 1, flexDirection: 'row', paddingTop: 20}}>
+                <View
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  <Button
+                    style={{
+                      width: 120,
+                      justifyContent:'center',
+                      alignSelf:'center',
+                      backgroundColor: '#2F954E'
+                    }}
+                  >
+                    <Label style={{color: 'white'}}>Simpan</Label>
+                  </Button>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  <Button
+                    onPress={() => this._btnNext()}
+                    style={{
+                      width: 120,
+                      justifyContent:'center',
+                      alignSelf:'center',
+                      backgroundColor: '#2F954E'
+                    }}
+                  >
+                    <Label style={{color: 'white'}}>Kembali</Label>
+                  </Button>
+                </View>
               </View>
-              <Button onPress={() => this._btnNext()} block  style={{ backgroundColor: '#6a51ae' }}>
-                <Label style={{ color: 'white' }}>Kembali</Label>
-              </Button>
             </Animated.View>
           </Animated.View>
         </View>

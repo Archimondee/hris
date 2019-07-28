@@ -45,7 +45,7 @@ import {SearchBar} from 'react-native-elements';
 //1 -> Accept
 //2 -> Reject
 
-export default class CutiScreen extends Component {
+export default class GantiScreen extends Component {
   constructor (props) {
     super (props);
     this.state = {
@@ -256,7 +256,7 @@ export default class CutiScreen extends Component {
             }}
           >
             <Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>
-              Report Cuti
+              Report Penggantian
             </Text>
           </View>
           <View
@@ -269,7 +269,7 @@ export default class CutiScreen extends Component {
             }}
           >
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate ('CutiForm')}
+              onPress={() => this.props.navigation.navigate ('GantiForm')}
               style={{paddingLeft: 0}}
             >
               <Ionicons name="ios-add" size={32} color="white" />
@@ -342,7 +342,7 @@ export default class CutiScreen extends Component {
                 disableRightSwipe={false}
                 style={{backgroundColor: 'white'}}
                 left={
-                  <Button success onPress={() => alert ('Success')}>
+                  <Button success onPress={()=>alert('Success')}>
                     <Icon active name="add" />
                   </Button>
                 }
@@ -356,10 +356,10 @@ export default class CutiScreen extends Component {
                         29 April 1997
                       </Text>
                     </View>
-                    <View style={{flex: 3}}>
+                    <View style={{flex: 3.1}}>
                       <Text style={{color: 'black'}}>Tipe</Text>
                       <Text style={{color: 'black'}}>
-                        Cuti Libur
+                        Kacamata & Lensa
                       </Text>
                     </View>
                     <View
@@ -371,8 +371,7 @@ export default class CutiScreen extends Component {
                       }}
                     >
                       <TouchableOpacity
-                        onPress={() =>
-                          this.props.navigation.navigate ('CutiDetail')}
+                        onPress={() => this.props.navigation.navigate ('GantiDetail')}
                       >
                         <Ionicons
                           name="ios-arrow-forward"
@@ -384,12 +383,123 @@ export default class CutiScreen extends Component {
                   </View>
                 }
                 right={
-                  <Button danger onPress={() => alert ('Gagal')}>
+                  <Button danger onPress={()=>alert('Gagal')}>
                     <Icon active name="trash" />
                   </Button>
                 }
               />
             </Card>
+            <Card style={{marginTop: 5, marginLeft: 10, marginRight: 10}}>
+              <SwipeRow
+                leftOpenValue={75}
+                rightOpenValue={-75}
+                disableLeftSwipe={false}
+                disableRightSwipe={false}
+                style={{backgroundColor: 'white'}}
+                left={
+                  <Button success onPress={()=>alert('Success')}>
+                    <Icon active name="add" />
+                  </Button>
+                }
+                body={
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{flex: 3.3, flexWrap: 'wrap'}}>
+                      <Text style={{color: 'black'}}>
+                        Gilang Aditya R
+                      </Text>
+                      <Text style={{color: 'black'}}>
+                        29 April 1997
+                      </Text>
+                    </View>
+                    <View style={{flex: 3.1}}>
+                      <Text style={{color: 'black'}}>Tipe</Text>
+                      <Text style={{color: 'black'}}>
+                        Kacamata & Lensa
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flex: 0.3,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                      }}
+                    >
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate ('GantiDetail')}
+                      >
+                        <Ionicons
+                          name="ios-arrow-forward"
+                          size={32}
+                          color={'black'}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                }
+                right={
+                  <Button danger onPress={()=>alert('Gagal')}>
+                    <Icon active name="trash" />
+                  </Button>
+                }
+              />
+            </Card>
+            <Card style={{marginTop: 5, marginLeft: 10, marginRight: 10}}>
+              <SwipeRow
+                leftOpenValue={75}
+                rightOpenValue={-75}
+                disableLeftSwipe={false}
+                disableRightSwipe={false}
+                style={{backgroundColor: 'white'}}
+                left={
+                  <Button success onPress={()=>alert('Success')}>
+                    <Icon active name="add" />
+                  </Button>
+                }
+                body={
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{flex: 3.3, flexWrap: 'wrap'}}>
+                      <Text style={{color: 'black'}}>
+                        Gilang Aditya R
+                      </Text>
+                      <Text style={{color: 'black'}}>
+                        29 April 1997
+                      </Text>
+                    </View>
+                    <View style={{flex: 3.1}}>
+                      <Text style={{color: 'black'}}>Tipe</Text>
+                      <Text style={{color: 'black'}}>
+                        Kacamata & Lensa
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flex: 0.3,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                      }}
+                    >
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate ('GantiDetail')}
+                      >
+                        <Ionicons
+                          name="ios-arrow-forward"
+                          size={32}
+                          color={'black'}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                }
+                right={
+                  <Button danger onPress={()=>alert('Gagal')}>
+                    <Icon active name="trash" />
+                  </Button>
+                }
+              />
+            </Card>
+          
           </ScrollView>
         </View>
       </View>

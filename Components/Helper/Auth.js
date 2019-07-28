@@ -77,10 +77,11 @@ export default class Auth extends Component {
     const { selectedItem } = this.state;
     return (
       <View style={styles.container}>
+          
           <View>
-            <Text>Silahkan pilih kode perusahaan</Text>
+            <Text style={{fontSize:20}}>Silahkan pilih kode perusahaan</Text>
           </View>
-          <View style={{paddingTop:10}}>
+          <View style={{paddingTop:10, width:'100%'}}>
             <PickerModal
               onSelected={this.onSelected.bind(this)}
               onClosed={this.onClosed.bind(this)}
@@ -101,8 +102,8 @@ export default class Auth extends Component {
               <Input secureTextEntry onChangeText={(password)=>this.setState({pswd:password})}/>
             </Item>
           </View>
-          <View style={{paddingTop:10}}>
-            <Button onPress={()=>this._getLink()} primary style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{paddingTop:20}}>
+            <Button style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center', backgroundColor:'#2F954E' }} onPress={()=>this.props.navigation.navigate('Mulai')}>
               <Text style={{ color: 'white' }}>Submit</Text>
             </Button>
           </View>
@@ -117,5 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width:'100%',
+    paddingLeft:15, paddingRight:15
   },
 });

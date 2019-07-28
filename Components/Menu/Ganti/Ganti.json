@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "Medical Checkup",
+    "Value": "MC",
+    "Code": "MC",
+    "Id": 1
+  },{
+    "Name": "Kacamata (Lensa Saja)",
+    "Value": "KC",
+    "Code": "KC",
+    "Id": 2
+  },{
+    "Name": "Kacamata (Lensa + Frame)",
+    "Value": "KLF",
+    "Code": "KLF",
+    "Id": 3
+  },{
+    "Name": "Laptop",
+    "Value": "LP",
+    "Code": "LP",
+    "Id": 4
+  }
+]

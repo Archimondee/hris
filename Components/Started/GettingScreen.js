@@ -20,7 +20,7 @@ export default class GettingScreen extends Component {
         <View style={{flex:1, alignContent:'center',alignItems:'center'}}>
           <Text style={{fontSize:30}}>Welcome!</Text>
           <Text style={{fontSize:18}}>Silahkan untuk memulai</Text>
-          <Button block style={{ alignContent:'center', margin:30}}>
+          <Button block style={{ alignContent:'center', margin:30, backgroundColor:'#2F954E'}} onPress={()=>this.props.navigation.navigate('Auth')}>
             <Text style={{color:'white'}}>
               Get Started
             </Text>
