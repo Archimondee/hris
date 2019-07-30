@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "HRIS 2",
+    "name": "HRIS Mobile",
     "slug": "HRIS2",
     "privacy": "public",
     "sdkVersion": "33.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
     "version": "1.0.0",
+	"platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/fmm.png",
     "splash": {
@@ -23,12 +22,8 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.FMM.HRIS"
-    },
     "android": {
-      "package": "com.FMM.HRIS",
+      "package": "com.HRIS.Mobile",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyCSyTFameSOaj9B1w1l2q468aFxuEm1hfY "

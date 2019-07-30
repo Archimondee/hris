@@ -83,8 +83,7 @@ const UserStack = createStackNavigator({
 //End Testing
 
 export default Main = createAppContainer(createSwitchNavigator({
-  //Cuti:CutiStack
-  //Ganti: GantiStack
+  
   Awal: StartedStack,
   Users: UserStack,
   Dash: DashboardStack

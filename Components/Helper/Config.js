@@ -1,25 +1,27 @@
 //This file like .env
 
-import { Constants } from 'expo';
+import {Constants} from 'expo';
 import {Platform} from 'react-native';
 
-const url = "http://192.168.0.7:8080/mobile_hris";
+const url = 'http://192.168.0.7:8080/mobile_hris';
 
 const ENV = {
-  dev:{
+  dev: {
     apiUrl: url,
     //link: "Testing"
   },
   staging: {
+    apiUrl: url,
     //apiUrl: "[your.staging.api.here]",
     //amplitudeApiKey: "[Enter your key here]",
     // Add other keys you want here
   },
   prod: {
+    apiUrl: url,
     //apiUrl: "[your.production.api.here]",
     //amplitudeApiKey: "[Enter your key here]",
     // Add other keys you want here
-  }
+  },
 };
 
 const getEnvVars = (env = Constants.manifest.releaseChannel) => {
@@ -28,7 +30,9 @@ const getEnvVars = (env = Constants.manifest.releaseChannel) => {
   // __DEV__ is true when run locally, but false when published.
   if (__DEV__) {
     return ENV.dev;
-  } 
+  } else {
+    return ENV.prod;
+  }
 };
 
 export default getEnvVars;
