@@ -23,13 +23,16 @@ import GantiDetailScreen from '../Menu/Ganti/GantiDetailScreen';
 import GettingScreen from '../Started/GettingScreen';
 import StartScreen from '../Users/StartScreen';
 import Auth from '../Helper/Auth';
+import Update from '../Helper/Update';
+import CheckAll from '../Helper/CheckAll';
 
 const StartedStack = createStackNavigator({
+  Check: CheckAll,
   Getting: GettingScreen,
-  
+  Update: Update,
   Auth: Auth
 },{
-  initialRouteName:'Getting',
+  initialRouteName:'Check',
   headerMode:'none'
 })
 
@@ -83,7 +86,6 @@ const UserStack = createStackNavigator({
 //End Testing
 
 export default Main = createAppContainer(createSwitchNavigator({
-  
   Awal: StartedStack,
   Users: UserStack,
   Dash: DashboardStack

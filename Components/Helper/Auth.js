@@ -3,17 +3,26 @@ import { Container, Header, Content, Icon, Picker, Form, Button, Item, Label, In
 import {View, Text, StyleSheet, AsyncStorage } from 'react-native';
 import PickerModal from 'react-native-picker-modal-view';
 import data from './Test.json';
+import {Linking} from 'expo';
 
 import getEnvVars from './Config';
-const {apiUrl} = getEnvVars();
+const {apiUrl, versi} = getEnvVars();
+import Loader from '../Widget/Loader';
+
 
 export default class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedItem: {},
+      username: '',
       pswd : '',
-      data: []
+      dataLink: [],
+      dataVersion: [],
+
+      loading: false,
+      atas: 'Checking version',
+      bawah: 'Please wait',
     };
   }
 
@@ -37,40 +46,120 @@ export default class Auth extends Component {
     console.log('back key pressed');
   }
 
-  _getLink(){
-    const {selectedItem, pswd} = this.state;
-    fetch(`${apiUrl}/getLink.php`,{
+  _createVersion(){
+    const {selectedItem} = this.state;
+    fetch(`${apiUrl}/get_version.php`,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        kode_perusahaan: selectedItem.Code,
-        password : pswd
+        id_perusahaan: selectedItem.Code,
       })
     }).then((response) => response.json())
         .then((responseJson => {
           this.setState({
-            data: responseJson
+            dataVersion: responseJson
           })
 
+          this.setState({
+            loading:true
+          })
+          
           i = 0;
-          for(i=0;i<2;i++){
-            if(responseJson[i].nama_proses == 'Login'){
-              login = responseJson[i].nama_server
-            }
-            if(responseJson[i].nama_proses == 'Register'){
-              register = responseJson[i].nama_server
-            }
+          //how to counting this 
+          for(i=0;i<1;i++){
+            api_updated = responseJson[i].api_updated;
+            app_updated = responseJson[i].app_updated;
+            id_perusahaan = responseJson[i].id_perusahaan;
           }
 
+          if(versi!=app_updated){
+            setTimeout (() => {
+          //console.log ('hello 1');
+              this.setState ({
+                
+                atas: 'Oops, older version',
+                bawah: 'Redirect',
+              });
+            }, 1000);
+
+            setTimeout (() => {
+          //console.log ('hello 1');
+              this.setState ({
+                loading:false
+              });
+              Linking.openURL('https://playstore.com');
+            }, 1700);
+          }else{
+            setTimeout (() => {
+          //console.log ('hello 1');
+              this.setState ({
+                
+                atas: 'Checking version',
+                bawah: 'Done',
+              });
+            }, 1000);
+
+            setTimeout (() => {
+          //console.log ('hello 1');
+              this.setState ({
+                loading:false
+              });
+            }, 1700);
+            const Version = {
+              api: api_updated,
+              app: versi,
+              id_perusahaan: id_perusahaan
+            }
+            AsyncStorage.setItem('Version', JSON.stringify(Version));
+            this.props.navigation.navigate('Login');
+          }
+
+          
+    })).catch(function(error){
+      alert('Version Error : '+error);
+    })
+  }
+
+  _getLink(){
+    const {selectedItem, pswd, username} = this.state;
+    fetch(`${apiUrl}/login_panel.php`,{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id_perusahaan: selectedItem.Code,
+        username: username,
+        password:pswd
+      })
+    }).then((response) => response.json())
+        .then((responseJson => {
+          this.setState({
+            dataLink: responseJson
+          })
+          i=0;
+          for(i=0;i<2;i++){
+            if(responseJson[i].remarks == 'Login'){
+              login = responseJson[i].link
+            }
+            if(responseJson[i].remarks == 'Register'){
+              register = responseJson[i].link
+            }
+          }
           const Link = {
             login: login,
             register: register
           }
-          AsyncStorage.setItem('Link', JSON.stringify(data));
-    }))
+          AsyncStorage.setItem('Link',JSON.stringify(Link));
+          this._createVersion();
+    })).catch(function(error){
+      alert('Link : '+error);
+    })
+    
   }
 
   render() {
@@ -81,6 +170,10 @@ export default class Auth extends Component {
           <View>
             <Text style={{fontSize:20}}>Silahkan pilih kode perusahaan</Text>
           </View>
+          <Loader
+            loading={this.state.loading}
+            atas={this.state.atas}
+            bawah={this.state.bawah} />
           <View style={{paddingTop:10, width:'100%'}}>
             <PickerModal
               onSelected={this.onSelected.bind(this)}
@@ -98,12 +191,16 @@ export default class Auth extends Component {
               autoSort={true}
             />
             <Item floatingLabel>
+              <Label>Username</Label>
+              <Input secureTextEntry onChangeText={(username)=>this.setState({username:username})}/>
+            </Item>
+            <Item floatingLabel>
               <Label>Password</Label>
               <Input secureTextEntry onChangeText={(password)=>this.setState({pswd:password})}/>
             </Item>
           </View>
           <View style={{paddingTop:20}}>
-            <Button style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center', backgroundColor:'#2F954E' }} onPress={()=>this.props.navigation.navigate('Mulai')}>
+            <Button style={{ height: 50, width: 200, alignItems: 'center', justifyContent: 'center', backgroundColor:'#2F954E' }} onPress={()=>this._getLink()}>
               <Text style={{ color: 'white' }}>Submit</Text>
             </Button>
           </View>
